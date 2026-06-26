@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6066EBCA82F9BB042C72F6FE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B152A49C7348E7D1130BFD /* App.swift */; };
 		7407F5C18CB56D6A6B46AAB8 /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94C736A1BE4FB9893778EF /* Volume.swift */; };
+		8E081C0B8F2D42B70E6D14A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8BB7C1CBF6EBFD7B8E5829A /* Assets.xcassets */; };
 		A174B50DB7C57AAE6CAFCD4F /* MenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9FF77DB958713612A3630 /* MenuContentView.swift */; };
 		A84A554329612F5ACA6F32A3 /* VolumeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42318A9FF2A03636F4001A /* VolumeType.swift */; };
 		C05A3258350C9B047FCB95B4 /* VolumeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A655835E45FAF02C6439AC87 /* VolumeSectionView.swift */; };
@@ -26,6 +27,7 @@
 		A655835E45FAF02C6439AC87 /* VolumeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSectionView.swift; sourceTree = "<group>"; };
 		B48CC7B2D5B187CF26D76A22 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = System/Library/Frameworks/DiskArbitration.framework; sourceTree = SDKROOT; };
 		EB6B8F3D9ACEFFDA75486532 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F8BB7C1CBF6EBFD7B8E5829A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				39B152A49C7348E7D1130BFD /* App.swift */,
+				F8BB7C1CBF6EBFD7B8E5829A /* Assets.xcassets */,
 				EB6B8F3D9ACEFFDA75486532 /* Info.plist */,
 				72485CE6154EC7DB94DBB429 /* Models */,
 				79EA1DD7084C58EEC7DD9F2E /* Services */,
@@ -111,6 +114,7 @@
 			buildConfigurationList = 5D0BB864D311FA20B91DDCA0 /* Build configuration list for PBXNativeTarget "Emulov" */;
 			buildPhases = (
 				B2EA5162455AD09E9049DFEA /* Sources */,
+				CE1A05F86BACED2867EB9F87 /* Resources */,
 				6954FD2BDB30E9190C811215 /* Frameworks */,
 			);
 			buildRules = (
@@ -156,6 +160,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE1A05F86BACED2867EB9F87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E081C0B8F2D42B70E6D14A6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B2EA5162455AD09E9049DFEA /* Sources */ = {
