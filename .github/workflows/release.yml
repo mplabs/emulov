@@ -1,0 +1,116 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      # ── Optional: Developer ID signing ────────────────────────────────────
+      # To enable proper signing + notarization, add these repository secrets:
+      #   DEVELOPER_ID_P12       — base64-encoded .p12 certificate
+      #   DEVELOPER_ID_PASSWORD  — .p12 export password
+      #   KEYCHAIN_PASSWORD      — a throwaway password for the CI keychain
+      #   NOTARYTOOL_KEY         — base64-encoded App Store Connect API key (.p8)
+      #   NOTARYTOOL_KEY_ID      — API key ID
+      #   NOTARYTOOL_ISSUER_ID   — API issuer ID
+      # ──────────────────────────────────────────────────────────────────────
+      - name: Import signing certificate
+        if: ${{ secrets.DEVELOPER_ID_P12 != '' }}
+        env:
+          P12_DATA: ${{ secrets.DEVELOPER_ID_P12 }}
+          P12_PASSWORD: ${{ secrets.DEVELOPER_ID_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          KEYCHAIN_PATH=$RUNNER_TEMP/signing.keychain-db
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          echo "$P12_DATA" | base64 --decode -o /tmp/cert.p12
+          security import /tmp/cert.p12 -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
+          security list-keychain -d user -s "$KEYCHAIN_PATH"
+
+      - name: Build (signed)
+        if: ${{ secrets.DEVELOPER_ID_P12 != '' }}
+        run: |
+          xcodebuild \
+            -project Emulov.xcodeproj \
+            -scheme Emulov \
+            -configuration Release \
+            ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGN_STYLE=Manual \
+            CODE_SIGN_IDENTITY="Developer ID Application" \
+            -archivePath $RUNNER_TEMP/Emulov.xcarchive \
+            archive
+
+      - name: Build (ad-hoc, no signing secrets)
+        if: ${{ secrets.DEVELOPER_ID_P12 == '' }}
+        run: |
+          xcodebuild \
+            -project Emulov.xcodeproj \
+            -scheme Emulov \
+            -configuration Release \
+            ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=YES \
+            build
+
+      - name: Export archive
+        if: ${{ secrets.DEVELOPER_ID_P12 != '' }}
+        run: |
+          cat > /tmp/export-options.plist <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>developer-id</string>
+            <key>destination</key><string>export</string>
+          </dict></plist>
+          EOF
+          xcodebuild -exportArchive \
+            -archivePath $RUNNER_TEMP/Emulov.xcarchive \
+            -exportPath $RUNNER_TEMP/export \
+            -exportOptionsPlist /tmp/export-options.plist
+          echo "APP_PATH=$RUNNER_TEMP/export/Emulov.app" >> $GITHUB_ENV
+
+      - name: Locate app (ad-hoc path)
+        if: ${{ secrets.DEVELOPER_ID_P12 == '' }}
+        run: |
+          APP=$(find ~/Library/Developer/Xcode/DerivedData/Emulov-*/Build/Products/Release -name "Emulov.app" | head -1)
+          echo "APP_PATH=$APP" >> $GITHUB_ENV
+
+      - name: Notarize
+        if: ${{ secrets.NOTARYTOOL_KEY != '' }}
+        env:
+          KEY_DATA: ${{ secrets.NOTARYTOOL_KEY }}
+          KEY_ID: ${{ secrets.NOTARYTOOL_KEY_ID }}
+          ISSUER_ID: ${{ secrets.NOTARYTOOL_ISSUER_ID }}
+        run: |
+          echo "$KEY_DATA" | base64 --decode -o /tmp/key.p8
+          ditto -c -k --keepParent "$APP_PATH" /tmp/Emulov-notarize.zip
+          xcrun notarytool submit /tmp/Emulov-notarize.zip \
+            --key /tmp/key.p8 \
+            --key-id "$KEY_ID" \
+            --issuer "$ISSUER_ID" \
+            --wait
+          xcrun stapler staple "$APP_PATH"
+
+      - name: Create zip
+        run: |
+          ditto -c -k --keepParent "$APP_PATH" $RUNNER_TEMP/Emulov-${{ github.ref_name }}.zip
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ runner.temp }}/Emulov-${{ github.ref_name }}.zip
+          generate_release_notes: true
