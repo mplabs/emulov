@@ -1,0 +1,38 @@
+name: Emulov
+options:
+  deploymentTarget:
+    macOS: "14.0"
+  bundleIdPrefix: de.mplabs
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+
+targets:
+  Emulov:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: Emulov
+    info:
+      path: Emulov/Info.plist
+      properties:
+        CFBundleName: Emulov
+        CFBundleDisplayName: Emulov
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        LSUIElement: true
+        NSHumanReadableCopyright: "Copyright © 2025"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: de.mplabs.Emulov
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_HARDENED_RUNTIME: YES
+        ARCHS: "$(ARCHS_STANDARD)"
+      configs:
+        Release:
+          ONLY_ACTIVE_ARCH: NO
+    dependencies:
+      - sdk: DiskArbitration.framework

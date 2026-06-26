@@ -1,0 +1,359 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6066EBCA82F9BB042C72F6FE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B152A49C7348E7D1130BFD /* App.swift */; };
+		7407F5C18CB56D6A6B46AAB8 /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A94C736A1BE4FB9893778EF /* Volume.swift */; };
+		A174B50DB7C57AAE6CAFCD4F /* MenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9FF77DB958713612A3630 /* MenuContentView.swift */; };
+		A84A554329612F5ACA6F32A3 /* VolumeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42318A9FF2A03636F4001A /* VolumeType.swift */; };
+		C05A3258350C9B047FCB95B4 /* VolumeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A655835E45FAF02C6439AC87 /* VolumeSectionView.swift */; };
+		E0FDD89D5E619C0AB444A454 /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B48CC7B2D5B187CF26D76A22 /* DiskArbitration.framework */; };
+		F22D3C33B0616BC69FB1B05A /* VolumeMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D556505E09341FD82F6174A /* VolumeMonitor.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		22A9FF77DB958713612A3630 /* MenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContentView.swift; sourceTree = "<group>"; };
+		39B152A49C7348E7D1130BFD /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		7D556505E09341FD82F6174A /* VolumeMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMonitor.swift; sourceTree = "<group>"; };
+		8A94C736A1BE4FB9893778EF /* Volume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volume.swift; sourceTree = "<group>"; };
+		95D7650D6107BEE248363FBF /* Emulov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emulov.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C42318A9FF2A03636F4001A /* VolumeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeType.swift; sourceTree = "<group>"; };
+		A655835E45FAF02C6439AC87 /* VolumeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSectionView.swift; sourceTree = "<group>"; };
+		B48CC7B2D5B187CF26D76A22 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = System/Library/Frameworks/DiskArbitration.framework; sourceTree = SDKROOT; };
+		EB6B8F3D9ACEFFDA75486532 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6954FD2BDB30E9190C811215 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0FDD89D5E619C0AB444A454 /* DiskArbitration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E519A234D1A210F75A88882 /* Emulov */ = {
+			isa = PBXGroup;
+			children = (
+				39B152A49C7348E7D1130BFD /* App.swift */,
+				EB6B8F3D9ACEFFDA75486532 /* Info.plist */,
+				72485CE6154EC7DB94DBB429 /* Models */,
+				79EA1DD7084C58EEC7DD9F2E /* Services */,
+				B35DB0CE7D516E6FEE368DB4 /* Views */,
+			);
+			path = Emulov;
+			sourceTree = "<group>";
+		};
+		72485CE6154EC7DB94DBB429 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A94C736A1BE4FB9893778EF /* Volume.swift */,
+				9C42318A9FF2A03636F4001A /* VolumeType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79EA1DD7084C58EEC7DD9F2E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7D556505E09341FD82F6174A /* VolumeMonitor.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A9A94B05FD4BFE219882DA90 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95D7650D6107BEE248363FBF /* Emulov.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B35DB0CE7D516E6FEE368DB4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				22A9FF77DB958713612A3630 /* MenuContentView.swift */,
+				A655835E45FAF02C6439AC87 /* VolumeSectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E2B7A69AC54515509F60DF5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B48CC7B2D5B187CF26D76A22 /* DiskArbitration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E64F1CBBF9B14B65938AFD4A = {
+			isa = PBXGroup;
+			children = (
+				1E519A234D1A210F75A88882 /* Emulov */,
+				E2B7A69AC54515509F60DF5B /* Frameworks */,
+				A9A94B05FD4BFE219882DA90 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5593D66A43509111FA945646 /* Emulov */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D0BB864D311FA20B91DDCA0 /* Build configuration list for PBXNativeTarget "Emulov" */;
+			buildPhases = (
+				B2EA5162455AD09E9049DFEA /* Sources */,
+				6954FD2BDB30E9190C811215 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Emulov;
+			packageProductDependencies = (
+			);
+			productName = Emulov;
+			productReference = 95D7650D6107BEE248363FBF /* Emulov.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C41DA1F995E32A8BF3C5A9BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5593D66A43509111FA945646 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C9C8AD849706FC1DF74C60EE /* Build configuration list for PBXProject "Emulov" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = E64F1CBBF9B14B65938AFD4A;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A9A94B05FD4BFE219882DA90 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5593D66A43509111FA945646 /* Emulov */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B2EA5162455AD09E9049DFEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6066EBCA82F9BB042C72F6FE /* App.swift in Sources */,
+				A174B50DB7C57AAE6CAFCD4F /* MenuContentView.swift in Sources */,
+				7407F5C18CB56D6A6B46AAB8 /* Volume.swift in Sources */,
+				F22D3C33B0616BC69FB1B05A /* VolumeMonitor.swift in Sources */,
+				C05A3258350C9B047FCB95B4 /* VolumeSectionView.swift in Sources */,
+				A84A554329612F5ACA6F32A3 /* VolumeType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3CC4C1E3D17C99FE67EF9993 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Emulov/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.mplabs.Emulov;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A349DBAB17DE97F0147CE1B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Emulov/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = de.mplabs.Emulov;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B3CC571D2C8475647EA36FAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		EDE80F85E3FFDCAC3065B412 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5D0BB864D311FA20B91DDCA0 /* Build configuration list for PBXNativeTarget "Emulov" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CC4C1E3D17C99FE67EF9993 /* Debug */,
+				A349DBAB17DE97F0147CE1B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C9C8AD849706FC1DF74C60EE /* Build configuration list for PBXProject "Emulov" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3CC571D2C8475647EA36FAD /* Debug */,
+				EDE80F85E3FFDCAC3065B412 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C41DA1F995E32A8BF3C5A9BA /* Project object */;
+}
