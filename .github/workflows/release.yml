@@ -8,6 +8,10 @@ on:
 jobs:
   build:
     runs-on: macos-14
+    # secrets context is not allowed in step `if:`, so expose it via env first.
+    env:
+      DEVELOPER_ID_P12: ${{ secrets.DEVELOPER_ID_P12 }}
+      NOTARYTOOL_KEY: ${{ secrets.NOTARYTOOL_KEY }}
     steps:
       - uses: actions/checkout@v4
 
@@ -27,7 +31,7 @@ jobs:
       #   NOTARYTOOL_ISSUER_ID   — API issuer ID
       # ──────────────────────────────────────────────────────────────────────
       - name: Import signing certificate
-        if: ${{ secrets.DEVELOPER_ID_P12 != '' }}
+        if: ${{ env.DEVELOPER_ID_P12 != '' }}
         env:
           P12_DATA: ${{ secrets.DEVELOPER_ID_P12 }}
           P12_PASSWORD: ${{ secrets.DEVELOPER_ID_PASSWORD }}
@@ -42,7 +46,7 @@ jobs:
           security list-keychain -d user -s "$KEYCHAIN_PATH"
 
       - name: Build (signed)
-        if: ${{ secrets.DEVELOPER_ID_P12 != '' }}
+        if: ${{ env.DEVELOPER_ID_P12 != '' }}
         run: |
           xcodebuild \
             -project Emulov.xcodeproj \
@@ -55,7 +59,7 @@ jobs:
             archive
 
       - name: Build (ad-hoc, no signing secrets)
-        if: ${{ secrets.DEVELOPER_ID_P12 == '' }}
+        if: ${{ env.DEVELOPER_ID_P12 == '' }}
         run: |
           xcodebuild \
             -project Emulov.xcodeproj \
@@ -67,7 +71,7 @@ jobs:
             build
 
       - name: Export archive
-        if: ${{ secrets.DEVELOPER_ID_P12 != '' }}
+        if: ${{ env.DEVELOPER_ID_P12 != '' }}
         run: |
           cat > /tmp/export-options.plist <<EOF
           <?xml version="1.0" encoding="UTF-8"?>
@@ -84,13 +88,13 @@ jobs:
           echo "APP_PATH=$RUNNER_TEMP/export/Emulov.app" >> $GITHUB_ENV
 
       - name: Locate app (ad-hoc path)
-        if: ${{ secrets.DEVELOPER_ID_P12 == '' }}
+        if: ${{ env.DEVELOPER_ID_P12 == '' }}
         run: |
           APP=$(find ~/Library/Developer/Xcode/DerivedData/Emulov-*/Build/Products/Release -name "Emulov.app" | head -1)
           echo "APP_PATH=$APP" >> $GITHUB_ENV
 
       - name: Notarize
-        if: ${{ secrets.NOTARYTOOL_KEY != '' }}
+        if: ${{ env.NOTARYTOOL_KEY != '' }}
         env:
           KEY_DATA: ${{ secrets.NOTARYTOOL_KEY }}
           KEY_ID: ${{ secrets.NOTARYTOOL_KEY_ID }}
