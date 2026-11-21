@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    permissions:
+      contents: write # needed by action-gh-release to create the release
     # secrets context is not allowed in step `if:`, so expose it via env first.
     env:
       DEVELOPER_ID_P12: ${{ secrets.DEVELOPER_ID_P12 }}
