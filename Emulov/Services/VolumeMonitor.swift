@@ -1,6 +1,7 @@
 import AppKit
 import DiskArbitration
 import Observation
+import UserNotifications
 
 @Observable @MainActor final class VolumeMonitor {
     var diskImages:    [Volume] = []
@@ -68,19 +69,26 @@ import Observation
         removable     = removals
     }
 
-    func eject(_ volume: Volume) {
-        let url = volume.url
-        Task.detached(priority: .userInitiated) {
-            try? NSWorkspace.shared.unmountAndEjectDevice(at: url)
-        }
-    }
+    func eject(_ volume: Volume) { eject([volume]) }
 
-    func ejectAll() {
-        let urls = all.map(\.url)
+    func ejectAll() { eject(all) }
+
+    private func eject(_ volumes: [Volume]) {
+        let targets = volumes.map { (url: $0.url, name: $0.name) }
         Task.detached(priority: .userInitiated) {
-            for url in urls {
-                try? NSWorkspace.shared.unmountAndEjectDevice(at: url)
-            }
+            let ejected = targets
+                .filter { (try? NSWorkspace.shared.unmountAndEjectDevice(at: $0.url)) != nil }
+                .map(\.name)
+            guard !ejected.isEmpty else { return }
+
+            // ponytail: no UNUserNotificationCenterDelegate — a menu bar agent is never the
+            // active app, so banners show. Add willPresent if the app ever gets a window.
+            let center = UNUserNotificationCenter.current()
+            guard (try? await center.requestAuthorization(options: [.alert])) == true else { return }
+            let content = UNMutableNotificationContent()
+            content.title = "Ejected"
+            content.body  = ejected.formatted(.list(type: .and))
+            try? await center.add(UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil))
         }
     }
 
